@@ -38,7 +38,7 @@ const searchSlice = createSlice({
     initialState,
     reducers: {
         setQuery(state,action) {
-            state.query = action.payload
+            state.query = action.payload;
         },
         clearResults(state) {
             state.results = [];

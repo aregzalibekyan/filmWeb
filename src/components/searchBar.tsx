@@ -12,6 +12,7 @@ export default function searchBar() {
     (state: any) => state.search
   );
   function handleSearch(e: any) {
+    console.log(e.target.value)
     dispatch(setQuery(e.target.value));
     if (query) {
       dispatch<any>(fetchSearchResults(e.target.value));
@@ -28,7 +29,6 @@ export default function searchBar() {
         <input
           type="text"
           onChange={handleSearch}
-          disabled={isLoading}
           placeholder="Type the movie title here"
           className="header--search--input"
         />
@@ -48,11 +48,23 @@ export default function searchBar() {
       <div className="header--search--result" style={styles}>
         <ol>
           {
-            // results.map(film => (
-            //     <li></li>
-            // ))
+            results.map((film:any) => (
+              <>
+            <li key={film.id}>
+              <div className="result--img">
+                <img src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`} className="result--poster"/>
+                </div>
+              <div className="result--data">
+                <h3>{film.title}</h3>
+                <p>{film.release_date}</p>
+                <p className="result--overview">{film.overview}</p>
+                </div>
+              </li>
+              <hr className="result--hr"/>
+              </>
+          ))
           }
-        </ol>
+        </ol> 
       </div>
     </div>
   );
