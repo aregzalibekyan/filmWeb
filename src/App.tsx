@@ -1,17 +1,15 @@
-import Header from "./components/header";
+import Main from "./routes/Main";
+import { BrowserRouter as Router,Route,Routes } from "react-router-dom";
 
 function App() {  
     // dispatch(removeTodo({todo:"new todo"}));
- 
-  
-
   return (
-    <>
- <Header />
-    <div>
-      
-    </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />}></Route>
+        <Route></Route>
+      </Routes>
+    </Router>
   );
 }
 

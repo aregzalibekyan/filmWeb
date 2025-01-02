@@ -1,7 +1,7 @@
 import SearchBar from "./searchBar";
 
 
-export default function header() {
+export default function Header() {
     return (
         <header>
             <div className="header--logo">
