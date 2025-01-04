@@ -5,6 +5,7 @@ import {
   fetchSearchResults,
   getResult,
 } from "../features/searchSlice";
+import no_img from "../assets/no_img.png"
 import { useNavigate } from "react-router-dom";
 
 export default function searchBar() {
@@ -59,7 +60,7 @@ export default function searchBar() {
               <>
             <li key={film.id} onClick={() => handleClick(film)}>
               <div className="result--img">
-                <img src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`} className="result--poster"/>
+                <img src={film.poster_path != null ?`https://image.tmdb.org/t/p/w500/${film.poster_path}` : no_img  } className="result--poster"/>
                 </div>
               <div className="result--data">
                 <h3>{film.title}</h3>
