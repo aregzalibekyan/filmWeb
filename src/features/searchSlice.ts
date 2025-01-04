@@ -7,6 +7,7 @@ export const fetchSearchResults = createAsyncThunk(
     async (query : any,thunkAPI) => {
        try {
         console.log(query)
+        console.log(encodeURIComponent(query));
         const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
         const data = await response.json();
         console.log(data);

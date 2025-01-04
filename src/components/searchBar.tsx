@@ -5,9 +5,11 @@ import {
   fetchSearchResults,
   getResult,
 } from "../features/searchSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function searchBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { query, isLoading, results } = useSelector(
     (state: any) => state.search
   );
@@ -23,6 +25,11 @@ export default function searchBar() {
   const styles = {
     display: query ? "inline-block" : "none ",
   };
+  function handleClick(film:any): void {
+    dispatch(setQuery(""));
+    navigate(`/film/${film.id}`,{state:{film}})
+  }
+
   return (
     <div className="header--search">
       <div className="header--search--bar">
@@ -50,7 +57,7 @@ export default function searchBar() {
           {
             results.map((film:any) => (
               <>
-            <li key={film.id}>
+            <li key={film.id} onClick={() => handleClick(film)}>
               <div className="result--img">
                 <img src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`} className="result--poster"/>
                 </div>
